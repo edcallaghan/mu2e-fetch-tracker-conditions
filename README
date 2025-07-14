@@ -1,0 +1,1 @@
+Example usage: `$ python3 ./fetch-straw-status.py --run 100000 --panels MN100 MN200 MN300 --mapping /path/to/panel-mapping.json --config /path/to/database-settings.json | tee ./TrkStrawStatus-100000.txt`
