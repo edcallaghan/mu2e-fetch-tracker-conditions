@@ -154,9 +154,10 @@ def load_config(path):
         rv = json.load(f)
     return rv
 
-def write_offline_table(conditions, geography, scheme, write):
+def write_offline_table(run, conditions, geography, scheme, write):
     for level,criteria in scheme.items(): 
-        write(level)
+        header = 'TABLE %s %d-%d' % (level, run, run)
+        write(header)
         for label,lookup in criteria.items():
             for minnesota,collections in conditions.items():
                 plane, panel = geography[minnesota]
@@ -178,7 +179,7 @@ def main(args):
             'Disabled': 'readout_disabled',
         },
     }
-    write_offline_table(conditions, geography, status_levels, print)
+    write_offline_table(args.run, conditions, geography, status_levels, print)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
